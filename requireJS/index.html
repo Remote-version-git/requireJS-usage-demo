@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>hello requireJS</h1>
+    <!-- data-main属性的作用是，指定网页程序的主模块。在上例中，就是js目录下面的main.js，这个文件会第一个被require.js加载。由于require.js默认的文件后缀名是js，所以可以把main.js简写成main。 -->
+    <!-- <script data-main="js/config" src="./js/require.js"></script> -->
+    <!-- async属性表明这个文件需要异步加载，避免网页失去响应。IE不支持这个属性，只支持defer，所以把defer也写上。 defer async="true"-->
+    <script src="./js/require.js"></script>
+    <script>
+        // 嵌套使用  引入配置
+        require(['js/config'], function () {
+            require(['bpp']);
+            require(['cpp']);
+            // 嵌套使用，返回的使用假参来接收
+            require(['app'], function (msg) {
+                console.log(msg)
+            });
+        })
+    </script>
+</body>
+</html>
